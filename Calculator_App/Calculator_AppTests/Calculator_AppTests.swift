@@ -6,30 +6,53 @@
 //
 
 import XCTest
+@testable import Calculator_App
 
 final class Calculator_AppTests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    func test_applyOperation_addition() {
+        expect("22") {
+            InputModel(operationType: .addition,
+                       lhsNumber: 2,
+                       rhsNumber: 20)
         }
     }
-
+    
+    func test_applyOperation_substraction() {
+        expect("18") {
+            InputModel(operationType: .subtraction,
+                       lhsNumber: 20,
+                       rhsNumber: 2)
+        }
+    }
+    
+    func test_applyOperation_multiplication() {
+        expect("40") {
+            InputModel(operationType: .multiplication,
+                       lhsNumber: 20,
+                       rhsNumber: 2)
+        }
+    }
+    
+    func test_applyOperation_division() {
+        expect("10") {
+            InputModel(operationType: .division,
+                       lhsNumber: 20,
+                       rhsNumber: 2)
+        }
+    }
+    
+    func test_applyOperation_modulus() {
+        expect("0.2") {
+            InputModel(operationType: .modulus,
+                       lhsNumber: 20,
+                       rhsNumber: 0)
+        }
+    }
+    
+    // MARK: - Helpers
+    private func expect(_ result: String,
+                        using input: () -> (InputModel)) {
+        let controller = OperationController()
+        XCTAssertEqual(controller.applyOperation(on: input()), result)
+    }
 }
