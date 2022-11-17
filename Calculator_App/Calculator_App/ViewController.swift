@@ -12,20 +12,19 @@ class ViewController: UIViewController {
     @IBOutlet weak private var txtLabel: UILabel!
     @IBOutlet private var buttonCollection: [CustomButton]!
     
-    var recentOperation: OperationType = .nope
-    var isOperationStart = false
-    var inputNumber = "" {
+    private var inputModel = InputModel()
+    private var operationController = OperationController()
+    private var recentOperation: OperationType = .nope
+    
+    private var inputNumber = "" {
         didSet {
             txtLabel.text = inputNumber == "" ? "0" : inputNumber
         }
     }
-    var resultNumber = ""
-    var lhsNumber = 0.0
-    var rhsNumber = 0.0
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    private var resultNumber = "" {
+        didSet {
+            txtLabel.text = resultNumber
+        }
     }
     
     @IBAction func buttonAction(_ sender: CustomButton) {
@@ -35,67 +34,51 @@ class ViewController: UIViewController {
         case 10: // Dot
             inputNumber += "."
         case 11: // Equal
-            applyOperation(operation: recentOperation)
+            resultNumber =  operationController.applyOperation(on: inputModel)
         case 12: // Addition
-            applyOperation(operation: .addition)
+            setModelData(operation: .addition)
         case 13: // Subtraction
-            applyOperation(operation: .subtraction)
+            setModelData(operation: .subtraction)
         case 14: // Multiplication
-            applyOperation(operation: .multiplication)
+            setModelData(operation: .multiplication)
         case 15: // Division
-            applyOperation(operation: .division)
+            setModelData(operation: .division)
         case 16: // Modulus
-            applyOperation(operation: .modulus)
+            setModelData(operation: .modulus)
         case 17: // clear input value
             inputNumber = ""
         case 18: // clear all value
             inputNumber = ""
-            resultNumber = ""
-            lhsNumber = 0.0
-            rhsNumber = 0.0
             recentOperation = .nope
+            inputModel.operationType = .nope
+            inputModel.lhsNumber = 0.0
+            inputModel.rhsNumber = 0.0
         default:
             break
         }
     }
     
-    fileprivate func applyOperation(operation: OperationType) {
+    fileprivate func setModelData(operation: OperationType) {
         if operation == .modulus {
             if inputNumber != "" {
-                lhsNumber = Double(inputNumber) ?? 0.0
+                inputModel.lhsNumber = Double(inputNumber) ?? 0.0
+                inputModel.operationType = operation
                 inputNumber = ""
-                resultNumber = "\(lhsNumber / 100)"
-                txtLabel.text = resultNumber
+                resultNumber =  operationController.applyOperation(on: inputModel)
             }
         } else {
             if recentOperation != .nope {
                 if inputNumber != "" {
-                    rhsNumber = Double(inputNumber) ?? 0.0
+                    inputModel.rhsNumber = Double(inputNumber) ?? 0.0
+                    inputModel.operationType = operation
                     inputNumber = ""
                     
-                    switch operation {
-                    case .addition:
-                        resultNumber = "\(lhsNumber + rhsNumber)"
-                    case .subtraction:
-                        resultNumber = "\(lhsNumber - rhsNumber)"
-                    case .multiplication:
-                        resultNumber = "\(lhsNumber * rhsNumber)"
-                    case .division:
-                        resultNumber = "\(lhsNumber / rhsNumber)"
-                    case .modulus:
-                        break
-                    case .nope:
-                        break
-                    }
+                    resultNumber =  operationController.applyOperation(on: inputModel)
                     
-                    lhsNumber = Double(resultNumber) ?? 0.0
-                    if Double(resultNumber)!.truncatingRemainder(dividingBy: 1) == 0 {
-                        resultNumber = "\(Int(Double(resultNumber)!))"
-                    }
-                    txtLabel.text = resultNumber
+                    inputModel.lhsNumber = Double(resultNumber) ?? 0.0
                 }
             } else {
-                lhsNumber = Double(inputNumber) ?? 0.0
+                inputModel.lhsNumber = Double(inputNumber) ?? 0.0
                 inputNumber = ""
             }
             recentOperation = operation

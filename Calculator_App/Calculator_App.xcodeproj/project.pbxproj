@@ -10,6 +10,8 @@
 		8837088D29257C4400D7DC38 /* OperationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8837088C29257C4400D7DC38 /* OperationType.swift */; };
 		886163122924ABFB00906F3D /* Calculator_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886163112924ABFB00906F3D /* Calculator_AppTests.swift */; };
 		886163192924AE3A00906F3D /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 886163182924AE3A00906F3D /* CustomButton.swift */; };
+		88C677102926195E009860C4 /* OperationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C6770F2926195E009860C4 /* OperationController.swift */; };
+		88C67712292619C0009860C4 /* InputModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88C67711292619C0009860C4 /* InputModel.swift */; };
 		88E52661292386C800903A06 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E52660292386C800903A06 /* AppDelegate.swift */; };
 		88E52663292386C800903A06 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E52662292386C800903A06 /* SceneDelegate.swift */; };
 		88E52665292386C800903A06 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E52664292386C800903A06 /* ViewController.swift */; };
@@ -33,6 +35,8 @@
 		8861630F2924ABFB00906F3D /* Calculator_AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calculator_AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		886163112924ABFB00906F3D /* Calculator_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator_AppTests.swift; sourceTree = "<group>"; };
 		886163182924AE3A00906F3D /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		88C6770F2926195E009860C4 /* OperationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OperationController.swift; sourceTree = "<group>"; };
+		88C67711292619C0009860C4 /* InputModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputModel.swift; sourceTree = "<group>"; };
 		88E5265D292386C800903A06 /* Calculator_App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator_App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E52660292386C800903A06 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88E52662292386C800903A06 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				88E52660292386C800903A06 /* AppDelegate.swift */,
 				88E52662292386C800903A06 /* SceneDelegate.swift */,
 				88E52664292386C800903A06 /* ViewController.swift */,
+				88C67711292619C0009860C4 /* InputModel.swift */,
+				88C6770F2926195E009860C4 /* OperationController.swift */,
 				886163182924AE3A00906F3D /* CustomButton.swift */,
 				8837088C29257C4400D7DC38 /* OperationType.swift */,
 				88E52666292386C800903A06 /* Main.storyboard */,
@@ -214,6 +220,8 @@
 			files = (
 				886163192924AE3A00906F3D /* CustomButton.swift in Sources */,
 				88E52665292386C800903A06 /* ViewController.swift in Sources */,
+				88C677102926195E009860C4 /* OperationController.swift in Sources */,
+				88C67712292619C0009860C4 /* InputModel.swift in Sources */,
 				88E52661292386C800903A06 /* AppDelegate.swift in Sources */,
 				8837088D29257C4400D7DC38 /* OperationType.swift in Sources */,
 				88E52663292386C800903A06 /* SceneDelegate.swift in Sources */,
